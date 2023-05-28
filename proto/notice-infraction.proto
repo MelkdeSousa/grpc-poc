@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package notice_infraction;
+
+message Empty {}
+
+message NoticeInfractionResponse {
+    string id = 1;
+    string code = 2;
+    // string typification = 3;
+}
+
+message NoticeInfractionListResponse {
+    repeated NoticeInfractionResponse notices = 1;
+}
+
+service NoticeInfractionService {
+    rpc List (Empty) returns (NoticeInfractionListResponse) {};
+}

@@ -10,8 +10,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@bufbuild/buf": "^1.19.0-1",
     "@rocketseat/eslint-config": "^1.2.0",
     "@types/node": "^20.2.5",
+    "grpc_tools_node_protoc_ts": "^5.3.3",
+    "grpc-tools": "^1.12.4",
     "tsx": "^3.12.7",
     "typecript": "^0.0.1-security"
   },
