@@ -1,25 +1,17 @@
-import { credentials, loadPackageDefinition } from '@grpc/grpc-js'
-import { loadSync } from '@grpc/proto-loader'
-import path from 'node:path'
+import { credentials } from '@grpc/grpc-js'
+import { NoticeInfractionServiceClient } from './proto/notice-infraction_grpc_pb'
+import { Empty } from './proto/notice-infraction_pb'
 
-const packageDefinition = loadSync(
-  path.join(__dirname, 'proto', 'notice-infraction.proto'),
-  {
-    keepCase: true,
-    longs: String,
-    enums: String,
-    defaults: true,
-    oneofs: true,
-  },
-)
-
-const noticeInfractionProto =
-  loadPackageDefinition(packageDefinition).notice_infraction
-const client = new noticeInfractionProto.NoticeInfractionService(
+const client = new NoticeInfractionServiceClient(
   'localhost:50051',
   credentials.createInsecure(),
 )
 
-client.list({}, (err, response) => {
-  console.log('List:', response.notices)
+client.list(new Empty(), (err, response) => {
+  if (err) {
+    console.error(err)
+    return
+  }
+
+  console.log(response.toObject())
 })
