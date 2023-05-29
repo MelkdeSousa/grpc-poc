@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "gen:certs": "./bin/gen-certs.sh",
+    "start:dev-server": "tsx src/server-grpc.ts",
+    "start:dev-client": "tsx src/client-grpc.ts"
   },
   "keywords": [],
   "author": "",
